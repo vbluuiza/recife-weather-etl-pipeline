@@ -12,5 +12,10 @@ __pycache__/
 .idea/
 .DS_Store
 
+# Ignorar arquivos de dados locais e notebooks
+data/raw/
+data/processed/
+
+# Ignorar arquivos de dependências locais do Poetry 
 pyproject.toml
 poetry.lock

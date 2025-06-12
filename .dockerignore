@@ -12,5 +12,7 @@ __pycache__/
 .idea/
 .DS_Store
 
-# Ignorar a pasta de dados local (vamos montá-la como um volume)
-data/
+# Ignorar arquivos de dados locais
+data/raw/
+data/processed/
+

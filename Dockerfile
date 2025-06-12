@@ -17,11 +17,5 @@ COPY . .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Exponha a porta do Postgres se necessário (opcional)
-# EXPOSE 5432
-
-# Defina variáveis de ambiente (opcional, pode usar .env)
-ENV PYTHONUNBUFFERED=1
-
 # Comando para rodar o pipeline
 CMD ["python", "main.py"]

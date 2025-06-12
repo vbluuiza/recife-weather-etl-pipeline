@@ -1,2 +1,0 @@
-city,country_code,weather_condition,weather_description,temperature,feels_like_temp,temp_min,temp_max,pressure,humidity,visibility_km,wind_speed,wind_direction_degrees,cloudiness_percent,latitude,longitude,measurement_datetime,sunrise_datetime,sunset_datetime,record_timestamp,timezone
-Recife,BR,Clouds,broken clouds,27.02,29.6,27.02,27.02,1014,78,10.0,5.66,170,75,-8.0539,-34.8811,17:08:17,05:29:44,17:09:16,2025-06-12 17:08:17,-10800
