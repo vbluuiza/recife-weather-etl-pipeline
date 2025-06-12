@@ -16,9 +16,9 @@ __pycache__/
 data/raw/
 data/processed/
 
-# Ignorar arquivos de dependências locais do Poetry 
-pyproject.toml
-poetry.lock
+# Ignorar notebooks temporários 
+notebooks/*.ipynb_checkpoints/
+
 
 logs/
 
