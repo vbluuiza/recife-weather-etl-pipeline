@@ -1,0 +1,16 @@
+# Ignorar o ambiente virtual do Poetry
+.venv
+.env
+
+# Ignorar caches do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorar caches e arquivos de configuração de IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Ignorar a pasta de dados local (vamos montá-la como um volume)
+data/

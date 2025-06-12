@@ -1,0 +1,16 @@
+# Ignorar o ambiente virtual do Poetry
+.env
+.venv/
+
+# Ignorar caches do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorar caches e arquivos de configuração de IDEs
+.vscode/
+.idea/
+.DS_Store
+
+pyproject.toml
+poetry.lock
