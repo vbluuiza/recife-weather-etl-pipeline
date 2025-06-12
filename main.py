@@ -3,7 +3,7 @@ from src.extract.extract_data import extract_data
 from src.transform.transform_data import transform_data, loading_data, find_most_recent_data
 from src.load.load_data import load_data
 
-from config.config import FILES_FOLDER, COLUMNS_DROP, COLUMNS_RENAME, TIMESTAMP, PROCESSED_DATA_DIR, DATETIME, FOLDER_PATH, DATE_COLUMNS
+from config.settings import FILES_FOLDER, COLUMNS_DROP, COLUMNS_RENAME, TIMESTAMP, PROCESSED_DATA_DIR, DATETIME, FOLDER_PATH, DATE_COLUMNS
 
 def main():
     try:

@@ -1,10 +1,11 @@
 import requests
 import os
 from dotenv import load_dotenv
-from datetime import datetime
+# from datetime import datetime
 import json
+# from config.settings import TIMESTAMP, DATETIME
 
-def extract_data(datetime, timestamp):
+def extract_data(output_path, execution_dt):
     # Carrega variáveis de ambiente do arquivo .env
     load_dotenv()
     
@@ -30,13 +31,13 @@ def extract_data(datetime, timestamp):
     print("Dados recebidos da API OpenWeather:")
 
     # Define o caminho do arquivo onde o JSON será salvo, dentro da pasta 'data/raw'
-    file_path = f'data/raw/recife_weather={timestamp}.json'
+    output_dir = os.path.dirname(output_path)
     
     # Cria a pasta 'data/raw' caso ela não exista
     os.makedirs(f'data/raw', exist_ok=True)
 
     # Salva os dados JSON no arquivo com indentação e encoding UTF-8
-    with open(file_path, 'w', encoding='utf-8') as file:
+    with open(output_path, 'w', encoding='utf-8') as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
-    print(f'Arquivo salvo em {file_path}')
+    print(f'Arquivo salvo em {output_path}')
     

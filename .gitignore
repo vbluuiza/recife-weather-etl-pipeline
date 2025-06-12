@@ -19,3 +19,6 @@ data/processed/
 # Ignorar arquivos de dependências locais do Poetry 
 pyproject.toml
 poetry.lock
+
+logs/
+
