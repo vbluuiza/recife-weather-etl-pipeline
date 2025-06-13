@@ -105,7 +105,7 @@ def recife_weather_pipeline():
         """, # SQL para criação da tabela, se ela ainda não existir
     )
 
-    # Tarefa de carregamento dos dados processados no banco de dados
+    # Task de carregamento dos dados processados no banco de dados
     @task
     def load(processed_df): 
         """Etapa 4: Carregar"""
@@ -114,7 +114,7 @@ def recife_weather_pipeline():
         load_data(df=processed_df) # Executa a função de carregamento
         print("Dados carregados com sucesso!")
 
-    # Definição da ordem de execução das tarefas no pipeline
+    # Definição da ordem de execução das Tasks no pipeline
     extract_output = extract() # Extração dos dados
     transform_output = transform(extract_output) # Transformação dos dados extraídos
     load_output = load(transform_output) # Carregamento dos dados transformados

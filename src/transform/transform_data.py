@@ -91,16 +91,13 @@ def transform_data(df, columns_drop, processed_data_dir, columns_rename, date_co
     df['visibility_km'] = df['visibility_km'] / 1000
     
     order_columns = [
-        # Localização
         'city',
         'country_code',
         
         
-        # Descrição do Tempo
         'weather_condition',
         'weather_description',
         
-        # Medidas Principais
         'temperature',
         'feels_like_temp',
         'temp_min',
@@ -108,7 +105,6 @@ def transform_data(df, columns_drop, processed_data_dir, columns_rename, date_co
         'pressure',
         'humidity',
         
-        # Medidas Secundárias
         'visibility_km',
         'wind_speed',
         'wind_direction_degrees',
@@ -117,14 +113,11 @@ def transform_data(df, columns_drop, processed_data_dir, columns_rename, date_co
         'latitude',
         'longitude',
 
-        # Datas e Horas (já convertidas para o fuso local)
         'measurement_datetime',
         'sunrise_datetime',
         'sunset_datetime',
         'record_timestamp',
         
-        
-        # Metadados
         'timezone'
     ]
     

@@ -40,5 +40,6 @@ COLUMNS_DROP = ['icon', 'base', 'main.grnd_level', 'main.sea_level',
 # Colunas com timestamps Unix
 DATE_COLUMNS = ['measurement_datetime', 'sunrise_datetime', 'sunset_datetime']
 
+# Nome do banco de dados e da tabela
 DB_SCHEMA = "weather_data"
 DB_TABLENAME = "recife_weather_records"

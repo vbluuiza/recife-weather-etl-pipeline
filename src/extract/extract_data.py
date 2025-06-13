@@ -1,9 +1,7 @@
 import requests
 import os
 from dotenv import load_dotenv
-# from datetime import datetime
 import json
-# from config.settings import TIMESTAMP, DATETIME
 
 def extract_data(output_path, execution_dt):
     # Carrega variáveis de ambiente do arquivo .env
