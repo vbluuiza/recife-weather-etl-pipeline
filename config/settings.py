@@ -1,15 +1,10 @@
 from pathlib import Path
 from datetime import datetime
-
+import pytz
 # Diretórios
 FILES_FOLDER = Path('data/raw')
 PROCESSED_DATA_DIR = Path('data/processed')
-# Define o padrão dos arquivos de dados processados
-FOLDER_PATH = 'data/processed/processed_recife_weather=*.csv'
-
-# Timestamp atual no formato padronizado
-DATETIME = datetime.now()
-TIMESTAMP = DATETIME.strftime('%Y-%m-%d_%H-%M-%S')
+FOLDER_PATH = 'data/processed/processed_recife_weather_*.csv'
 
 # Dicionário para renomear colunas
 COLUMNS_RENAME = {
@@ -40,6 +35,11 @@ COLUMNS_DROP = ['icon', 'base', 'main.grnd_level', 'main.sea_level',
 # Colunas com timestamps Unix
 DATE_COLUMNS = ['measurement_datetime', 'sunrise_datetime', 'sunset_datetime']
 
-# Nome do banco de dados e da tabela
+# Nome do schema e tabela no Postgres
 DB_SCHEMA = "weather_data"
 DB_TABLENAME = "recife_weather_records"
+
+
+RAW_FILENAME_PREFIX = "recife_weather_"
+
+RECIFE_TZ = pytz.timezone("America/Recife")

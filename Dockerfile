@@ -1,4 +1,4 @@
-# Usa imagem oficial do Python
+# Use imagem oficial do Python
 FROM python:3.11-slim
 
 # Instale dependências do sistema

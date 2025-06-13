@@ -2,10 +2,26 @@ from pathlib import Path
 from src.extract.extract_data import extract_data
 from src.transform.transform_data import transform_data, loading_data, find_most_recent_data
 from src.load.load_data import load_data
+from datetime import datetime
+import pandas as pd
 
-from config.settings import FILES_FOLDER, COLUMNS_DROP, COLUMNS_RENAME, TIMESTAMP, PROCESSED_DATA_DIR, DATETIME, FOLDER_PATH, DATE_COLUMNS
+from config.settings import FILES_FOLDER, COLUMNS_DROP, COLUMNS_RENAME, PROCESSED_DATA_DIR, FOLDER_PATH, DATE_COLUMNS
+
+
 
 def main():
+    """
+    Executa o pipeline ETL (fora do Docker) completo para coleta de dados meteorológicos de Recife:
+    1. Extração via API
+    2. Transformação e limpeza
+    3. Carga no banco de dados
+    """
+    
+    # Gera timestamp atual e define caminho do arquivo bruto (.json)
+    DATETIME = datetime.now()
+    TIMESTAMP = DATETIME.strftime('%d-%m-%Y_%H-%M-%S')
+    output_path = FILES_FOLDER / f"recife_weather_{TIMESTAMP}.json"
+    
     try:
         print("="*50)
         print("Iniciando pipeline ETL Recife Weather")
@@ -13,18 +29,18 @@ def main():
         
         # Etapa 1: Extract (ETL)
         print("\n🔎 [1/3] Extraindo dados...")
-        extract_data(datetime=DATETIME, timestamp=TIMESTAMP)
+        extract_data(output_path=output_path, execution_dt=DATETIME)
         path = find_most_recent_data(FILES_FOLDER)
-        print(f"✅ Arquivo encontrado: {path}")
+        print(f"✅ Arquivo encontrado: {path}\n")
         
         # Etapa 2: Transform (ETL)
         print("\n🛠️ [2/3] Carregando e normalizando dados...")
         raw_df = loading_data(path)
-        print("✅ Dados carregados e normalizados")
+        print("✅ Dados carregados e normalizados\n")
         
         # Etapa 2.1: Transform (ETL)
         print("\n📦 [2/3] Transformando e salvando dados processados...")
-        transform_data(
+        processed_path = transform_data(
             df=raw_df,
             columns_drop=COLUMNS_DROP,
             columns_rename=COLUMNS_RENAME,
@@ -32,12 +48,12 @@ def main():
             processed_data_dir=PROCESSED_DATA_DIR,
             timestamp=TIMESTAMP
         )
-        print("✅ Dados transformados")
+        print("✅ Transformação concluída\n")
         
-        # Etapa 2: Load (ETL)
+        # Etapa 3: Load (ETL)
         print("\n🚚 [3/3] Carregando dados processados para o destino final...")
-        load_data(folder_path=FOLDER_PATH)
-        print("✅ Dados carregados com sucesso!")
+        load_data(df=processed_path)
+        print("✅ Dados carregados com sucesso no banco!\n")
         
         print("\nPipeline executado com sucesso!")
         print("="*50)
